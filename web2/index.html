@@ -4,17 +4,25 @@
     </head>
     <body>
         <p>iCoffee</p>
+        <input id='width' placeholder='Width'>
+        <input id='height' placeholder='Height'>
+        <button onclick='checkpage()'>Check</button>
+        <p id='result'></p>
         <script>
-            var price = prompt('Enter price: ');
-            // price = +price;
-            price = parseFloat(price);
-            var price2;
-            if ( price > 100 ) {
-	            price2 = price * 0.95;
-	            alert('New Price is: ' + price2 + ' Baht');
-            } else if ( price <= 100 ) {
-                price2 = price;
-                alert('New Price is: ' + price2 + ' Baht');
+            function checkpage() {
+                var width = document.getElementById('width').value;
+                var height = document.getElementById('height').value;
+                width = parseFloat(width);      // w = +w
+                height = parseFloat(height)     // h = +h
+                if (isNaN(height) | isNaN(width)) {
+                    alert('Invalid Input');
+                } else if (height > width) {
+                    document.getElementById('result').innerText = 'Portrait';
+                } else if (width > height) {
+                    document.getElementById('result').innerText = 'Landscape';
+                } else if (width == height) {
+                    docment.getElementById('result').innerText = 'Square';
+                }
             }
         </script>
     </body>
