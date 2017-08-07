@@ -5,9 +5,17 @@
     <body>
         <p>iCoffee</p>
         <script>
-            var x = prompt('Enter Deposit: ');
-            var t = x * 1.5 / 100;
-            alert('Total interest is: ' + t);
+            var price = prompt('Enter price: ');
+            // price = +price;
+            price = parseFloat(price);
+            var price2;
+            if ( price > 100 ) {
+	            price2 = price * 0.95;
+	            alert('New Price is: ' + price2 + ' Baht');
+            } else if ( price <= 100 ) {
+                price2 = price;
+                alert('New Price is: ' + price2 + ' Baht');
+            }
         </script>
     </body>
 </html>
