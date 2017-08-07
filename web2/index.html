@@ -4,25 +4,17 @@
     </head>
     <body>
         <p>iCoffee</p>
-        <input id='width' placeholder='Width'>
-        <input id='height' placeholder='Height'>
-        <button onclick='checkpage()'>Check</button>
+        <input id='name' placeholder='Name'>
+        <button onclick='reaction()'>OK</button>
         <p id='result'></p>
         <script>
-            function checkpage() {
-                var width = document.getElementById('width').value;
-                var height = document.getElementById('height').value;
-                width = parseFloat(width);      // w = +w
-                height = parseFloat(height)     // h = +h
-                if (isNaN(height) | isNaN(width)) {
-                    alert('Invalid Input');
-                } else if (height > width) {
-                    document.getElementById('result').innerText = 'Portrait';
-                } else if (width > height) {
-                    document.getElementById('result').innerText = 'Landscape';
-                } else if (width == height) {
-                    document.getElementById('result').innerText = 'Square';
-                }
+            function reaction() {
+                var name = document.getElementById('name').value;
+            if (name == 'Mark Zuckerberg') {
+                document.getElementById('result').innerText = 'Please give me $1M';
+            } else if (name == 'Donald Trump') {
+                document.getElementById('result').innerText = 'Hello';
+            }
             }
         </script>
     </body>
