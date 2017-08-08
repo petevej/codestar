@@ -1,5 +1,3 @@
-function g(x) {
-    return 3.28 * x;
+for (var i = 0; i < 3; i++) {
+	console.log('I love you');
 }
-var j = g(7.2);
-console.log(j);
