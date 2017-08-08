@@ -1,3 +1,3 @@
-for (var i = 0; i < 3; i++) {
-	console.log('I love you');
+for (var i = 9; i >= 0; i--) {
+	console.log(i);
 }
