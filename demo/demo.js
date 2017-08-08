@@ -1,8 +1,5 @@
-var s = 'I love you'
-var t = "I love you"
-var u = `I love you`
-
-var pokemon = 5;
-var s = `You have ${pokemon} pokemons.`
-
-console.log(s);
+function g(x) {
+    return 3.28 * x;
+}
+var j = g(7.2);
+console.log(j);
