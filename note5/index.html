@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web</title>
+    </head>
+        <body>
+           <!-- <input id='query'>
+            <button onclick='search()'>OK</button> -->
+
+            <ol id='coffee'> <!-- order list. it's wtill display in 1, 2, 3,... -->
+                <li>Latte</li>
+                <li>Mocha</li>
+            </ol>
+
+            <ul> <!-- it's wtill display in dot -->
+                <li>Chocolate</li>
+                <li>Vanilla</li>
+            </ul>
+
+<!--user input the number.Find what is number can devide-->
+            <input id='number'>
+            <button onclick='show()'>OK</button>
+            <ul id= 'result'>
+            </ul>
+
+<!--user input the actitvites.Add datas and clear datas-->
+            <input id='act'>
+            <button onclick='add()'>Add</button>
+            <button onclick='del()'>Clear</button>
+            <ul id='display'></ul>
+
+<!--user input the place and find the zipcode-->
+            <input id='place'>
+            <button onclick='zipcode()'>Find zipcode</button>
+            <ul id='zip'></ul>
+<!--select option-->
+            <select>
+                <!-- <option = 'placeholder'>click dropdown to select place</option> -->
+                <option>Bangruk</option>
+                <option>Dusit</option>
+                <option>Bangplad</option>
+            </select>
+            <!-- <script>
+                var area = [10500, 10300, 11000]
+                function search(){
+                        var e=document.getElementById('query')
+                        var found=false
+                        for(var i of area){
+                            if(i==e.value){
+                                found = true
+                            }
+                        }
+                        if(found) {alert('Available')}
+                        else{alert('Not available')}
+                }
+            </script> -->
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+                <script src="jquery-3.2.1.js"></script>
+                <script>
+                   // $('body').append('Hello jquery')//test command to investigate the address of jquery
+                    $('ol').append('<li>Expresso</li>') //insert data in the order list
+                    $('#coffee').prepend('<li>Expresso</li>') //show on the top
+
+                    function show(){
+                        var n = document.getElementById('number').value
+                        //var n =$('number').val()
+                        $('#result').empty()
+                        for(var i=1;i<=n;i++){
+                            if(n % i ==0){
+                                $('#result').append('<li>'+i+'</li>')
+                            }
+                        }
+                    }
+
+                    //function for add data and clear datas
+                    function add(){
+                        var a = document.getElementById('act').value
+                        $('#display').val('')
+                        $('#display').append('<li>'+a+'</li>')
+                    }
+
+                    function del(){ // can't use "clear" for named the function
+                        $('#display').empty()
+                    }
+
+                    //function zipcode
+                    var data = [
+                        {area:'Bangruk', code:'10500'},
+                        {area:'Dusit', code:'10300'},
+                        {area:'Bangplad', code:'10700'}
+                    ]
+                    function zipcode(){
+                        var p = $('#place').val()
+                        var t = 'Not found'
+                        for(var i of data){
+                        if(p==i.area){
+                            t=i.code
+                            //$('#zip').append('The zipcode is '+t)
+                            }
+                        }
+                        //document.getElementById('zip').innerText ='The zipcode is ' + t
+                        //document.getElementById('zip').innerHTML ='<b>'+ 'The zipcode is ' + t + '</b>'
+                        $('#zip').text(t)
+                    }
+
+                    //add the data to dropdown
+                    $('select').empty()
+                    for(var i of data){
+                        $('select').append('<option>'+ i.area +'</option>')
+                    }
+
+                    $('select').empty()
+                    var coffee =['Latte', 'Mocha', 'Espresso' ,'Americano']
+                    coffee.sort()
+                    for(var i of coffee){
+                        $('select').append('<option>'+ i +'</option>')
+                    }
+
+                    //การดึงข้อมูลมาจาก internet
+                    $.get('http://codestar.work/coffee').done(show) //read data from internet.if done call the shw function
+                    function shw(data){
+                        for(var i of data){
+                        $('select').append('<option>'+ i +'</option>')
+                        }
+                    }
+                </script>
+            
+        </body>
+</html>
