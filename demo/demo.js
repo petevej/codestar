@@ -1,15 +1,23 @@
-var add = [
+var info = [
     {
-        area: 'Bangruk',
-        code: '10500'
+        title: 'bio',
+        price: 150
     },
     {
-        area: 'Dusit',
-        code: '10300'
+        title: 'chem',
+        price: 130
     },
     {
-        area: 'SP',
-        code: '10250'
+        title: 'math',
+        price: 140
     }
-];
-console.log(add);
+]
+console.log(info[0]);
+// find the cheapest book
+var min = 0;
+for (var i in info) {
+    if (info[min].price > info[i].price) {
+        min = i;
+    }
+}
+console.log(info[min].title);
