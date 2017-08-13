@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>iCoffee</title>
+    </head>
+    <body>
+        <!-- <input id='query'>
+             <button onclick='search()'>OK</button> -->
+        <ol id='coffee'>    <!-- ordered list -->
+            <li>Latte</li>
+            <li>Mocha</li>
+        </ol>
+
+        <ul>    <!-- unordred list, usually a bullet-->
+            <li>Chocolate</li>
+            <li>Vanilla</li>
+        </ul>
+
+        <!-- user input a number, find what it's divisible by -->
+        <input id='number'>
+        <button onclick='show()'>OK</button>
+        <ul id='result'></ul>
+
+        <!-- user input the activities. Add data and clear data -->
+        <input id='act'>
+        <button onclick='add()'>Add</button>
+        <button onclick='del()'>Clear</button>
+        <ul id='display'></ul>
+
+        <!-- user input the place and find the zipcode -->
+        <input id='place'>
+        <button onclick='zipcode()'>Find zipcode</button>
+        <ul id='zip'></ul>
+
+        <!-- select option -->
+        <select>
+            <!-- <option = 'placeholder'>click dropdown to select place</option> -->
+            <option>Bangruk</option>
+            <option>Dusit</option>
+            <option>Bangplad</option>
+        </select>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+        <script src="jquery-3.2.1.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('ol').append('<li>Espresso</li>');    // insert data into ordered list
+                $('#coffee').prepend('<li>Espresso</li>');   // show it first with prepend
+            });
+            
+            // function to show divisible-bys
+            function show() {
+                var n = document.getElementById('number').value;
+                // var n = $('#number').val();
+                $('#result').empty();   // clear the result first
+                for (var i = 1; i <= n; i++) {  // loop until reach input
+                    if (n % i == 0) {   // find modulo zero
+                        $('#result').append('<li>'+i+'</li>');   // output in result
+                    }
+                }
+            }
+            
+            // function to add and delete data
+            function add() {
+                var a = document.getElementById('act').value;
+                $('#display').val('');
+                $('#display').append('<li>'+a+'</li>');
+            }
+
+            function del() {    // can't use "clear" for function name as it's a predefined function
+                $('#display').empty();  // empty - Remove all child nodes of the set of matched elements from the DOM
+            }
+
+            // function to display zipcode
+            var data = [
+                {
+                    area:'Bangruk',
+                    code:'10500'
+                },
+                {
+                    area:'Dusit',
+                    code:'10300'
+                },
+                {
+                    area:'Bangplad',
+                    code:'10700'
+                }
+            ]
+
+            function zipcode() {
+                var p = $('#place').val();
+                var t = 'Not Found';
+                for(var i of data) {
+                    if (p == i.area) {
+                        t = i.code;
+                        // $('#zip').append('The zipcode is '+t);
+                    }
+                }
+                // document.getElementById('zip').innerText = 'The zipcode is ' + t;
+                // document.getElementById('zip').innerHTML = '<b>' + 'The zipcode is ' + t + '</b>'
+                $('#zip').text(t);
+            }
+
+            // add data to dropdown
+            $('select').empty()
+            for (var i of data) {
+                $('select').append('<option>'+ i.area +'</option>')
+            }
+            $('select').empty()
+            var coffee = ['Latte', 'Mocha', 'Espresso', 'Americano'];
+            coffee.sort();
+            for (var i of coffee) {
+                $('select').append('<option>'+ i +'</option>')
+            }
+            
+            // pull info from a link
+            $.get('http://codestar.work/coffee').done(shw) // if done, call the shw function
+            function shw(data) {
+                for(var i of data) {
+                    $('select').append('<option>'+ i +'</option>')
+                }
+            }
+        </script>
+    </body>
+</html>
