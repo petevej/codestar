@@ -2,7 +2,10 @@
 
 <%
 	var user = 'Mark Zuckerberg'
-	var data = ['Latte', 'Mocha', 'Espresso']
 %>
 <%= user %><br>
-<%= data %>
+<select>
+	<% for (var i of product) { %>
+		<option> <%= i %> </option>
+	<% }			%>
+</select>
