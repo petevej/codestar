@@ -1,11 +1,18 @@
-class Circle {
-	constructor(r) {
-		this.radius = r;
+class Rectangle {
+	constructor(w, h) {
+		this.width = w;
+		this.height = h;
 	}
 	area() {
-		return Math.PI * this.radius * this.radius;
+		return this.width * this.height;
 	}
 }
-var c = new Circle(5);
-var a = c.area();
-console.log(a);
+var r = new Rectangle(8, 5);
+console.log( r.area() );
+class Square extends Rectangle {
+	constructor(x) {
+		super(x, x);
+	}
+}
+var s = new Square(5);
+console.log( s.area() );
