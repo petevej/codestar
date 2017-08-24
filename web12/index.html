@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset='utf-8'>
-		<title>Web</title>
-	</head>
-	<body>
-		<p></p>
-		<button onclick='start()'>Start</button>
-		<script>
-			// In Terminal
-			// sudo npm install -g lite-server
-			// lite-server
-			var service = new webkitSpeechRecognition();
-			service.lang = 'th';
-			service.interimResults = true;
-			service.onresult = show;
+<head>
+	<title>Web</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+	<p></p>
+	<button onclick='start()'>Start</button>
+	<button onclick='stop()'>Stop</button>
+	<script>
+		var service = new webkitSpeechRecognition();
+		service.lang = 'th';
+		service.interimResults = true;
+		service.onresult = show;
 
-			function show(e) {
-				// console.log(e);
-				// alert(e.results[0][0].transcript);
-				var s = e.results[0][0].transcript;
-				var url = "https://www.kaidee.com/browse?q="
-				location.href = url + s;
-			}
-			function start() {
-				service.start();
-				setTimeout(stop, 5000);
-			}
-			function stop() {
-				service.stop();
-			}			
-		</script>
-	</body>
+		// search query on Kaidee.com
+		function show(e) {
+			var s = e.results[0][0].transcript;
+			var url = 'https://www.kaidee.com/browse?q='
+			location.href = url + s;
+		}
+
+		function start() {
+			service.start();
+			setTimeout(stop, 5000);
+		}
+		function stop() {
+			service.stop();
+		}
+	</script>
+</body>
 </html>
-
